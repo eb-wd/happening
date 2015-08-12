@@ -1,15 +1,8 @@
-<!doctype html>
 <?php 
-  $server = "localhost";
-  $username = "ebwd";
-  $password = "ebwd707";
-  $db = "progress";
 
-  $connect = new mysqli($server, $username, $password,$db);
-  if($connect->connect_errno){
-      echo "Failed connection to Mysql: (" . $connect->connect_errno . ") ". $connect->connect_error;
-  }
-?>
+require 'server/init_sql.php';
+
+?><!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -22,6 +15,7 @@
 </head>
 
 <body>
+  <h1>Timeline</h1>
 <form action="server/create_event.php" method="post">
   Title<input id="event_title" type="text" name="title"/>
   Date:<input id="event_date" type="datetime-local" name="date"/>
