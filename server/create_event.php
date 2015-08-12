@@ -3,40 +3,38 @@
 require 'init_sql.php';
 
 
-
-
-
 function create_event() {
 
+  global $connect;
   date_default_timezone_set('America/Chicago');
   $date_str = $_POST['date'] . " " . $_POST['time'];
   $new_date = date('Y-m-d H:m:s', strtotime($date_str));
+  echo $new_date;
   /*$date = date('Y-m-d', strtotime($_POST['date']));*/
   $title = $_POST['title'];
-  $sql = "INSERT INTO progress1 (title, date_created, event_date) VALUES('$title', NOW(), '$new_date')";
-  $result = $connect::mysql_query($sql);
+  $sql = "INSERT INTO progress1 (title, event_date) VALUES ('$title', '$new_date')";
+  $result = $connect->query($sql);
 
   if( $result ) {
+    // show success message and redirect to homepage
     echo "SUCCESS";
+    $homepage = $_SERVER['HTTP_REFERER']; 
+    header("Location: " . $homepage);
+    die();
+
   } else {
+    //stay on page and show error
     echo "Error" . $connect->error;
   }
 
-  mysql_close( $connect );
+  $connect->close(void);
 }
 
 // launch create_event
 create_event();
 
-/*
-*  get previous webpage URL a.k.a. "referrer", and redirect 
-*  NOTE: This can be spoofed, and we should set it to a definite URL once we have a working site up and running
-*/
 
-$homepage = $_SERVER['HTTP_REFERER']; 
 
-header("Location: " . $homepage);
-die();
 
 
 

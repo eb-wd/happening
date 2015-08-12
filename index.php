@@ -1,6 +1,7 @@
 <?php 
+set_include_path('server/');
 
-require 'server/init_sql.php';
+require 'init_sql.php';
 
 ?><!doctype html>
 <html lang="en">
@@ -22,6 +23,7 @@ require 'server/init_sql.php';
   Time:<input id="time_date" type="time" name="time"/>
   <input type="submit" value="submit" id="process_event"/>
 </form>
+<button id="show_table">Show Events</button>
 </body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
     </script>
