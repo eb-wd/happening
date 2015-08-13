@@ -8,7 +8,7 @@ require 'init_sql.php';
 <head>
   <meta charset="utf-8">
 
-  <title>stuff</title>
+  <title>Happening</title>
   <!-- <link rel="stylesheet" href="/css/styles.css?v=1.0"> -->
   <!--[if lt IE 9]>
   <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -16,23 +16,23 @@ require 'init_sql.php';
 </head>
 
 <body>
-  <h1>Timeline</h1>
-<form action="server/create_event.php" method="post">
-  Title<input id="event_title" type="text" name="title"/>
-  Date:<input id="event_date" type="datetime-local" name="date"/>
-  Time:<input id="time_date" type="time" name="time"/>
-  <input type="submit" value="submit" id="process_event"/>
-</form>
-<button id="show_table">Show Events</button>
+  <h1>Happening</h1>
+  <form action="server/create_event.php" method="post">
+    Title<input id="event_title" type="text" name="title"/>
+    Date:<input id="event_date" type="datetime-local" name="date"/>
+    <input type="submit" value="submit" id="process_event"/>
+  </form>
+  <button id="show_table">Show Events</button>
+  <div class="table_container"></div>
 </body>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
-    </script>
-      <!--<script src="js/main.js"></script>-->
-      <script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="js/show_table.js" defer></script>
+    <!--<script src="js/main.js"></script>
+    <script>
       $('#process_event').click(function(){
         var date = document.getElementById('event_date').value;
       console.log(date);
     });
-      </script>
+    </script> -->
 
 </html>

@@ -7,7 +7,7 @@ function create_event() {
 
   global $connect;
   date_default_timezone_set('America/Chicago');
-  $date_str = $_POST['date'] . " " . $_POST['time'];
+  $date_str = $_POST['date'];
   $new_date = date('Y-m-d H:m:s', strtotime($date_str));
   echo $new_date;
   /*$date = date('Y-m-d', strtotime($_POST['date']));*/
