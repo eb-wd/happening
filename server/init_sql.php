@@ -8,9 +8,9 @@ $password = "ebwd707";
 $db = "progress";
 
 // if using Erik's db, just remove dbvars.php... might add that to .gitignore
-if ( file_exists ( 'dbvars.php' ) || file_exists( 'server/dbvars.php' ) ) {
-	include 'dbvars.php';
-}
+//if ( file_exists ( 'dbvars.php' ) || file_exists( 'server/dbvars.php' ) ) {
+//	include 'dbvars.php';
+//}
 
 $connect = new mysqli($server, $username, $password, $db);
 
