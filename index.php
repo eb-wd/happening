@@ -11,6 +11,7 @@ require 'init_sql.php';
   <meta charset="utf-8">
     <!-- Bootstrap -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/main.css" rel="stylesheet">
   <title>stuff</title>
   <!-- <link rel="stylesheet" href="/css/styles.css?v=1.0"> -->
   <!--[if lt IE 9]>
@@ -52,7 +53,10 @@ require 'init_sql.php';
   		<input type="submit" value="submit" id="process_event"/>
 	</form>
 	<button id="show_table">Show Events</button>
+	<div class="table_container"></div>
+	<div class="prog"></div>
 	<?php
+/*
 		$qr = "SELECT title, date_created, event_date FROM progress1";
 		$result = $connect->query($qr);
 		if($result->num_rows > 0){
@@ -60,23 +64,18 @@ require 'init_sql.php';
 			echo 'title: ' . $row['title'] . " Event Date: " . $row['event_date'] . " Date Created: " . $row['date_created'] . "<br>";
 		 }
 		}
-
+*/
 	?>
 	</div>
 	<!-- END OF CONTENT BOX -->
 </div>
+
  <!-- END MAIN CONTAINER -->
 </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="js/show_table.js" defer></script>
+<script src="js/show_progress.js" defer></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.mobile.custom.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
-</script>
-      <!--<script src="js/main.js"></script>-->
-<script>
-      $('#process_event').click(function(){
-        var date = document.getElementById('event_date').value;
-      console.log(date);
-    });
-</script>
 
 </html>
