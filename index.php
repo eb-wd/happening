@@ -45,7 +45,7 @@ require 'init_sql.php';
 		</ul>
 	</div>
 	<!-- END MOBILE NAV -->
-	<h1>Timeline</h1>
+	<h1>Yo What's Happening?</h1>
 	<form action="server/create_event.php" method="post">
 		Title<input id="event_title" type="text" name="title"/>
 		Date:<input id="event_date" type="datetime-local" name="date"/>
