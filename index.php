@@ -14,9 +14,12 @@ require 'init_sql.php';
   <link href="css/main.css" rel="stylesheet">
   <title>stuff</title>
   <!-- <link rel="stylesheet" href="/css/styles.css?v=1.0"> -->
-  <!--[if lt IE 9]>
+  <!--[if lt IE 9] >
   <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="js/jquery.knob.js"></script>
+
 </head>
 
 <body>
@@ -46,6 +49,16 @@ require 'init_sql.php';
 	</div>
 	<!-- END MOBILE NAV -->
 	<h1>Yo What's Happening?</h1>
+	<?php
+ 
+	<div class="row">
+	<script>
+		function create_knob(title, val){
+			
+		}
+	</script>
+
+<!-- DEV STUFF -->
 	<form action="server/create_event.php" method="post">
 		Title<input id="event_title" type="text" name="title"/>
 		Date:<input id="event_date" type="datetime-local" name="date"/>
@@ -55,25 +68,13 @@ require 'init_sql.php';
 	<button id="show_table">Show Events</button>
 	<div class="table_container"></div>
 	<div class="prog"></div>
-	<?php
-/*
-		$qr = "SELECT title, date_created, event_date FROM progress1";
-		$result = $connect->query($qr);
-		if($result->num_rows > 0){
-		 while($row = $result->fetch_assoc()){
-			echo 'title: ' . $row['title'] . " Event Date: " . $row['event_date'] . " Date Created: " . $row['date_created'] . "<br>";
-		 }
-		}
-*/
-	?>
 	</div>
 	<!-- END OF CONTENT BOX -->
 </div>
-
+1
  <!-- END MAIN CONTAINER -->
 </body>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="js/show_table.js" defer></script>
+<script src="js/show_table.js" defer></script>
 <script src="js/show_progress.js" defer></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.mobile.custom.min.js"></script>

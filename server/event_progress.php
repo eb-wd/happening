@@ -2,11 +2,12 @@
 
 require 'init_sql.php';
 
-//function events_progress(){
+function events_progress(){
 	global $connect;
 	$sql = "SELECT title,  date_created, event_date FROM progress1";
 	$result = $connect->query($sql);
 	date_default_timezone_set("America/Chicago");
+	$array = array();
 	if($result->num_rows > 0){
 		//compute difference in time
 		while($row = $result->fetch_assoc()){
@@ -16,7 +17,8 @@ require 'init_sql.php';
 			$now = date("Y-m-d h:i:s");
 			$time_until = abs(strtotime($now) - strtotime($date_start));
 			$progress = round((($time_until / $total_time) * 100),0);
-			echo 'Title: ' . $row['title'] . ' Progress: ' . $progress . '%<br>';
+			$event = array($row['title'],$progress);
+			array_push($array, $event);
 		}
 	}
 	//table is empty 
@@ -24,11 +26,11 @@ require 'init_sql.php';
 		echo 'PLEASE CREATE AN EVENT';
 
 	}
-
-//}
+	return $array;
+}
 
 
 //run events_progress()
-//events_progess();
+$event_array = events_progess();
 
 ?>
