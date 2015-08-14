@@ -16,8 +16,13 @@ function events_progress(){
 			$total_time = abs(strtotime($date_end) - strtotime($date_start));
 			$now = date("Y-m-d h:i:s");
 			$time_until = abs(strtotime($now) - strtotime($date_start));
-			$progress = round((($time_until / $total_time) * 100),0);
-			$event = array($row['title'],$progress);
+			//CLOCK DATA
+			$seconds = $time_until % 60;
+			$minutes = floor(($time_until / 60) % 60);
+			$hours = floor($time_until / 3600);
+
+			//$progress = round((($time_until / $total_time) * 100),0);
+			$event = array($row['title'],$hours,$minutes,$seconds);
 			array_push($array, $event);
 		}
 	}
@@ -30,7 +35,5 @@ function events_progress(){
 }
 
 
-//run events_progress()
-$event_array = events_progess();
 
 ?>

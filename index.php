@@ -49,14 +49,27 @@ require 'init_sql.php';
 	</div>
 	<!-- END MOBILE NAV -->
 	<h1>Yo What's Happening?</h1>
-	<?php
- 
-	<div class="row">
 	<script>
-		function create_knob(title, val){
-			
+		function create_knob(){
+			$(".dial").knob();
 		}
 	</script>
+	<?php
+		require 'event_progress.php';
+		$events = events_progress();
+		$title =  $events[0][0];
+		$hours = $events[0][1] % 24;
+		$min = $events[0][2] % 60;
+		$seconds = $events[0][3];
+
+		echo '<div class="row">';
+         	echo '<input type="text" value="' . $hours . '" data-displayInput=false data-min="0" data-max="24" class="dial hour">'; 
+	?>
+	<script>create_knob();</script>
+	<?php
+		echo '</div>';
+	?>
+
 
 <!-- DEV STUFF -->
 	<form action="server/create_event.php" method="post">
