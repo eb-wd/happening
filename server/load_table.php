@@ -2,7 +2,6 @@
 
 require 'init_sql.php';
 
-
 /* Loads full <table> element with SQL data */
 ?>
 
@@ -15,7 +14,6 @@ require 'init_sql.php';
 	</tr>
 	<?php
 		$query = "SELECT * FROM progress1";
-
 		if ($data = $connect->query($query, MYSQLI_USE_RESULT)) {
 			// if query successful, store resulting db data in $data
 			while ($row = $data->fetch_row()) {
@@ -37,3 +35,4 @@ require 'init_sql.php';
 	?>
 
 </table>
+
