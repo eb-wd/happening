@@ -61,16 +61,49 @@ require 'init_sql.php';
   		$title =  $events[0][0];
   		$hours = $events[0][1] % 24;
   		$min = $events[0][2] % 60;
-  		$seconds = $events[0][3];
+  		$sec = $events[0][3];
 
   		echo '<div class="row">';
-           	echo '<input type="text" value="' . $hours . '" data-displayInput=false data-min="0" data-max="24" class="dial hour">'; 
-  	?>
-  	<script>create_knob();</script>
+		echo '	<div class="col-md-4">';
+           	echo '<input id="hour" type="text" value="' . $hours . '"  data-min="0" data-max="24" class="dial hour">'; 
+  		echo '	</div>';
+		echo '	<div class="col-md-4">';
+		echo '	<input id="min" type="text" value="' . $min . '"  data-displayInput=false data-min="0" data-max="60" class="dial min">';
+		echo '	</div>';
+		echo '	<div class="col-md-4">';
+		echo '	<input id="secs" type="text" value="' . $sec . '"  data-displayInput=false data-min="0" data-max="60" class="dial sec">';
+		echo '	</div>';
+	?>
+  		<script>create_knob();</script>
   	<?php
   		echo '</div>';
   	?>
+	<script>
+		setInterval(function(){
+			var val = $('#secs').val();
+			if(val == 60){
+				val = 0;
+				var mins = $('#min').val();
+				mins++;
+				if(mins == 60){
+					mins = 0;
+					var hours = $('#hour').val();
+					hours++;
+					if(hours == 24){
+						hours = 0;
+					}
+					$('#hour').val(hours).trigger("change");
+				}
+                                $('#min').val(mins).trigger("change");
 
+			}
+			val++;
+			console.log($('#secs').val());
+			$('#secs').val(val).trigger("change");
+			
+		}, 1000);
+		
+	</script>
 
   <!-- DEV STUFF -->
   	<form action="server/create_event.php" method="post">
