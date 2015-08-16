@@ -55,28 +55,6 @@ require 'init_sql.php';
   			$(".dial").knob();
   		}
   	</script>
-  	<?php
-	/*
-  		require 'event_progress.php';
-  		$events = events_progress();
-  		$title =  $events[0][0];
-  		$hours = $events[0][1] % 24;
-  		$min = $events[0][2] % 60;
-  		$sec = $events[0][3];
-
-  		echo '<div class="row">';
-		echo '<div class="eventclock">';
-	//echo '	<div class="col-md-4">';
-           	echo '<input id="hour" type="text" value="' . $hours . '"  data-min="0" data-max="24" class="dial hour">'; 
-  	//	echo '	</div>';
-	//	echo '	<div class="col-md-4">';
-		echo '	<input id="min" type="text" value="' . $min . '"  data-displayInput=false data-min="0" data-max="60" class="dial min">';
-	//	echo '	</div>';
-	//	echo '	<div class="col-md-4">';
-		echo '	<input id="secs" type="text" value="' . $sec . '"  data-displayInput=false data-min="0" data-max="60" class="dial sec">';
-		echo '	</div>';
-  		echo '</div>';
-      */?>
         <?php
 		require 'event_progress.php';
 		$events = events_progress();
@@ -87,19 +65,16 @@ require 'init_sql.php';
 			$sec = $time_until % 60;
                         $min = floor(($time_until / 60) % 60);
                         $hours = floor($time_until / 3600) % 24;
-
-//	                $title =  $events[1][0];
-  //      	        $hours = $events[1][1] % 24;
-    //           		$min = $events[1][2] % 60;
-      //          	$sec = $events[1][3];
-
-                echo '<div class="row">
-			<div class="eventclock">
-                	<input id="hour" type="text" value="' . $hours . '"  data-min="0" data-max="24" class="dial hour">
-                	<input id="min" type="text" value="' . $min . '"  data-displayInput=false data-min="0" data-max="60" class="dial min">
-                	<input id="secs" type="text" value="' . $sec . '"  data-displayInput=false data-min="0" data-max="60" class="dial sec">
-                	</div>
-                </div>';
+			$total_days = floor($events[$i][2] / 86400);
+			$days = ($time_until / 86400);
+	                echo '<div class="row">
+				<div class="eventclock">
+                                <input id="day" type="text" value="' . $days . '"  data-min="0" data-max="' . $total_days . '" class="dial hour">
+                		<input id="hour" type="text" value="' . $hours . '"  data-min="0" data-max="24" class="dial hour">
+                		<input id="min" type="text" value="' . $min . '"  data-displayInput=false data-min="0" data-max="60" class="dial min">
+                		<input id="secs" type="text" value="' . $sec . '"  data-displayInput=false data-min="0" data-max="60" class="dial sec">
+                		</div>
+                	</div>';
 		}
         ?>
 

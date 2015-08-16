@@ -22,7 +22,7 @@ function events_progress(){
 			$hours = floor($time_until / 3600);
 
 			//$progress = round((($time_until / $total_time) * 100),0);
-			$event = array($row['title'],$time_until);
+			$event = array($row['title'],$time_until,$total_time);
 			array_push($array, $event);
 		}
 	}
