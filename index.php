@@ -56,6 +56,7 @@ require 'init_sql.php';
   		}
   	</script>
   	<?php
+	/*
   		require 'event_progress.php';
   		$events = events_progress();
   		$title =  $events[0][0];
@@ -64,45 +65,71 @@ require 'init_sql.php';
   		$sec = $events[0][3];
 
   		echo '<div class="row">';
-		echo '	<div class="col-md-4">';
+		echo '<div class="eventclock">';
+	//echo '	<div class="col-md-4">';
            	echo '<input id="hour" type="text" value="' . $hours . '"  data-min="0" data-max="24" class="dial hour">'; 
-  		echo '	</div>';
-		echo '	<div class="col-md-4">';
+  	//	echo '	</div>';
+	//	echo '	<div class="col-md-4">';
 		echo '	<input id="min" type="text" value="' . $min . '"  data-displayInput=false data-min="0" data-max="60" class="dial min">';
-		echo '	</div>';
-		echo '	<div class="col-md-4">';
+	//	echo '	</div>';
+	//	echo '	<div class="col-md-4">';
 		echo '	<input id="secs" type="text" value="' . $sec . '"  data-displayInput=false data-min="0" data-max="60" class="dial sec">';
 		echo '	</div>';
-	?>
-  		<script>create_knob();</script>
-  	<?php
   		echo '</div>';
-  	?>
+      */?>
+        <?php
+		require 'event_progress.php';
+		$events = events_progress();
+		$length = count($events);
+		for($i =0; $i < $length; $i++){
+			$title = $events[$i][0];
+			$time_until = $events[$i][1];
+			$sec = $time_until % 60;
+                        $min = floor(($time_until / 60) % 60);
+                        $hours = floor($time_until / 3600) % 24;
+
+//	                $title =  $events[1][0];
+  //      	        $hours = $events[1][1] % 24;
+    //           		$min = $events[1][2] % 60;
+      //          	$sec = $events[1][3];
+
+                echo '<div class="row">
+			<div class="eventclock">
+                	<input id="hour" type="text" value="' . $hours . '"  data-min="0" data-max="24" class="dial hour">
+                	<input id="min" type="text" value="' . $min . '"  data-displayInput=false data-min="0" data-max="60" class="dial min">
+                	<input id="secs" type="text" value="' . $sec . '"  data-displayInput=false data-min="0" data-max="60" class="dial sec">
+                	</div>
+                </div>';
+		}
+        ?>
+
+	<script>create_knob();</script>
 	<script>
+	$(".eventclock").each(function(){
+		var $clock = $(this);
 		setInterval(function(){
-			var val = $('#secs').val();
+			var val = $('#secs', $clock).val();
 			if(val == 60){
 				val = 0;
-				var mins = $('#min').val();
+				var mins = $('#min', $clock).val();
 				mins++;
 				if(mins == 60){
 					mins = 0;
-					var hours = $('#hour').val();
+					var hours = $('#hour',$clock).val();
 					hours++;
 					if(hours == 24){
 						hours = 0;
 					}
-					$('#hour').val(hours).trigger("change");
+					$('#hour',$clock).val(hours).trigger("change");
 				}
-                                $('#min').val(mins).trigger("change");
+                                $('#min',$clock).val(mins).trigger("change");
 
 			}
 			val++;
-			console.log($('#secs').val());
-			$('#secs').val(val).trigger("change");
+			$('#secs', $clock).val(val).trigger("change");
 			
 		}, 1000);
-		
+	});
 	</script>
 
   <!-- DEV STUFF -->
