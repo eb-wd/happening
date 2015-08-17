@@ -35,5 +35,4 @@ function events_progress(){
 }
 
 
-
 ?>
