@@ -51,7 +51,7 @@ require 'init_sql.php';
     	<!-- END MOBILE NAV -->
     	<h1>Yo What's Happening?</h1>
       <div class="row" id="clock_wrapper">
-        <?php require 'display_events.php'; ?>
+        <?php /* require 'display_events.php'; */ ?>
       </div>
       <!-- DEV STUFF -->
       <form action="server/create_event.php" method="post">
@@ -71,43 +71,6 @@ require 'init_sql.php';
 <script src="js/show_progress.js" defer></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.mobile.custom.min.js"></script>
-<!-- load display_events.php on page load, and refresh on click of #refresh --> 
-
-<script>
-/* load clock script */
-function create_knob(){
-  $(".dial").knob();
-}
-
-create_knob();
-/* end load clocks */
-
-/* update clock values */
-$(".eventclock").each(function(){
-  var $clock = $(this);
-  setInterval(function(){
-    var val = $('#secs', $clock).val();
-    if(val == 60){
-      val = 0;
-      var mins = $('#min', $clock).val();
-      mins++;
-      if(mins == 60){
-        mins = 0;
-        var hours = $('#hour',$clock).val();
-        hours++;
-        if(hours == 24){
-          hours = 0;
-        }
-        $('#hour',$clock).val(hours).trigger("change");
-      }
-      $('#min',$clock).val(mins).trigger("change");
-    }
-    val++;
-    $('#secs', $clock).val(val).trigger("change");
-    
-  }, 1000);
-});
-</script>
-<!-- end update clock values -->
+<script src="js/clocks.js"></script>
 
 </html>

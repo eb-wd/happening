@@ -36,3 +36,7 @@ function events_progress(){
 
 
 ?>
+
+<script>
+create_knob();
+</script>

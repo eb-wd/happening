@@ -28,3 +28,7 @@ function display_events() {
 
 display_events();
 ?>
+
+<script>
+create_knob();
+</script>
