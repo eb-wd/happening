@@ -1,3 +1,4 @@
+
 <?php 
 set_include_path('server/');
 
@@ -5,6 +6,7 @@ require 'init_sql.php';
 
 ?><!doctype html>
 <html lang="en">
+<!-- note -->
 <head>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
