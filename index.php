@@ -95,58 +95,6 @@ require 'init_sql.php';
 */
 		}
         ?>
-<style>
-.row{
-	margin-top:300px;
-	margin-bottom:300px;
-}
-.eventclock{
-        position:relative;
-        width:350px;
-        margin:auto;
-}
-.secz{
-        position:absolute;
-        left:87.5px;
-        top:87px;
-}
-.inners{
-        display:inline;
-        width:100px;
-        height:100px;
-}
-.minz{
-        position:absolute;
-        left:75px;
-        top:75px;
-}
-.innerm{
-        display:inline;
-        width:100px;
-        height:100px;
-}
-.hourz{
-        position:absolute;
-        left:55px;
-        top:55px;
-}
-.innerh{
-        display:inline;
-        width:200px;
-        height:200px;
-}
-.dayz{
-        position:absolute;
-        left:10px;
-        top:10px;
-}
-
-.innerd{
-        display:inline;
-        width:300px;
-        height:300px;
-}
-</style>
 
 	<script>create_knob();</script>
 	<script>

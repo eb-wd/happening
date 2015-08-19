@@ -11,29 +11,55 @@ h1{
 
 /* KNOBS */
 
-.outer{
-	postion:relative;
-	width:350px;
-	margin:auto;
-}
-.mid{
-	position:absolute;
-	left:10px;
-	top:10px;
-}
-.inner{
-	display:inline;
-	width:300px;
-	height:300px;
+.row{
+        margin-top:300px;
+        margin-bottom:300px;
 }
 
-.min-mid{
-	position:absolute;
-	left:60px;
-	top:60px;
+.eventclock{
+        position:relative;
+        width:350px;
+        margin:auto;
 }
-.mid-inner{
-	display:inline;
-	width:200px;
-	height:200px;
+.secz{
+        position:absolute;
+        left:87.5px;
+        top:87px;
 }
+.inners{
+        display:inline;
+        width:100px;
+        height:100px;
+}
+.minz{
+        position:absolute;
+        left:75px;
+        top:75px;
+}
+.innerm{
+        display:inline;
+        width:100px;
+        height:100px;
+}
+.hourz{
+        position:absolute;
+        left:55px;
+        top:55px;
+}
+.innerh{
+        display:inline;
+        width:200px;
+        height:200px;
+}
+.dayz{
+        position:absolute;
+        left:10px;
+        top:10px;
+}
+
+.innerd{
+        display:inline;
+        width:300px;
+        height:300px;
+}
+
