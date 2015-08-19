@@ -1,0 +1,74 @@
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+ <script src="js/jquery.knob.js"></script>
+         <script>
+                function create_knob(){
+                        $(".dial").knob();
+                }
+	</script>                              
+ 		<div class="eventclock">
+			<div class="dayz">
+ 				<div class="innerd"><input id="day" type="text" value="10"  data-min="0" data-max="100" data-height="300" data-width="300" data-displayinput=false data-thickness="0.3" class="dial hour"></div>
+			</div>
+			<div class="hourz">
+                               <div class="innerh"> <input id="hour" type="text" value="10"  data-min="0" data-max="24" data-height="210" data-width="210" data-thickness="0.25" data-displayinput=false class="dial hour"></div>
+			</div>
+			<div class="minz">
+                                <div class="innerm"><input id="min" type="text" value="10"  data-displayInput=false data-min="0" data-max="60" data-height="170" data-width="170" data-displayinput=false data-thickness="0.15" class="dial min"></div>
+			</div>
+			<div class="secz">
+                                <div class="inners"><input id="secs" type="text" value="10"  data-displayInput=false data-min="0" data-max="60" data-height="145" data-width="145" data-thickness="0.1" class="dial sec"></div>
+			</div>
+		</div>
+<script>
+	create_knob();
+</script>
+<style>
+.eventclock{
+	position:relative;
+	width:350px;
+	margin:auto;
+}
+.secz{
+	position:absolute;
+	left:87.5px;
+	top:87px;
+}
+.inners{
+	display:inline;
+	width:100px;
+	height:100px;
+}
+.minz{
+	position:absolute;
+	left:75px;
+	top:75px;
+}
+.innerm{
+	display:inline;
+	width:100px;
+	height:100px;
+}
+.hourz{
+	position:absolute;
+	left:55px;
+	top:55px;
+}
+.innerh{
+	display:inline;
+	width:200px;
+	height:200px;
+}
+
+.dayz{
+	position:absolute;
+	left:10px;
+	top:10px;
+}
+
+.innerd{
+	display:inline;
+	width:300px;
+	height:300px;
+}
+</style>
