@@ -52,9 +52,9 @@ require 'init_sql.php';
   	<script>
   		function create_knob(){
   			$(".dial").knob({
-  				'format' : function (value) {
-     					return value + ' Days';
-  				},
+  //				'format' : function (value) {
+    // 					return value + ' Days';
+  //				},
 			    'draw': function() {
        				 $(this.i).css('transform', 'roate180deg').css('font-size', '10pt');
     				}
@@ -84,7 +84,7 @@ require 'init_sql.php';
               echo '<div id="eventcols" class="col-md-4 col-6-sm col-12-xs">
 		<div class="eventclock">
                         <div class="dayz">
-                                <div class="innerd"><input id="day" type="text" value="' . $days . '"  data-min="0" data-max="' . $total_days . '" data-height="300" data-width="300" data-thickness="0.3" data-bgColor="' . $colors[4] . '" data-fgColor="' . $colors[0] . '" class="dial hour"></div>
+                                <div class="innerd"><input id="day" type="text" value="' . $days . '"  data-min="0" data-max="' . $total_days . '" data-height="300" data-width="300" data-thickness="0.3" data-bgColor="' . $colors[4] . '" data-fgColor="' . $colors[0] . '" class="dial day"></div>
                         </div>
                         <div class="hourz">
                                <div class="innerh"> <input id="hour" type="text" value="' . $hours . '"  data-min="0" data-max="220" data-height="210" data-width="210" data-thickness="0.25" data-displayinput=false data-fgColor="' . $colors[1] . '" data-bgColor="' . $colors[4] . '" class="dial hour"></div>
@@ -102,22 +102,11 @@ require 'init_sql.php';
         ?>
 
 	<script>create_knob();
-		$('.dial').each(function(){
-			$(this).val(this.val()).trigger('change');
-			});
-//	$('.dial').each(function(){
-//		$(this).trigger(
-//			'configure',
-//			{
-//				"readOnly":true
-//			});
-//		});
 		var titles  = <?php echo json_encode($titles);?>;
-		console.log(titles)
-		$(".dial").each(function(index){
-			$(this).val($(this).val() + ' Days');
-		});
-		//$(".dial").val($('.dial').val() + ' days');
+//		$(".dial day").each(function(index){
+  //                      $(this).val(this.val()).trigger('change');
+//			$(this).val($(this).val() + ' Days');
+//		});
 	</script>
 	<script>
 	$(".eventclock").each(function(){
