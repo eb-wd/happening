@@ -51,30 +51,31 @@ require 'init_sql.php';
   	<h1>Yo What's Happening?</h1>
   	<script>
   		function create_knob(){
-  			$(".dial").knob();
-                        $(".dial").trigger(
-                                        'configure',
-                                        {
-                                                "ticks":"8",
-                                                "skin":"tron",
-                                        }
-                );
-
-  		}
+  			$(".dial").knob({
+  				'format' : function (value) {
+     					return value + ' Days';
+  				},
+			    'draw': function() {
+       				 $(this.i).css('transform', 'roate180deg').css('font-size', '10pt');
+    				}
+			});
+		}
   	</script>
         <?php
 		require 'event_progress.php';
 		$events = events_progress();
+		$titles = array();
 		$length = count($events);
 		$colors = array( "#006BB2", "#007ACC", "#008AE6", "#0099FF","#C2F0FF");
 		for($i =0; $i < $length; $i++){
 			$title = $events[$i][0];
+			array_push($titles, $title);
 			$time_until = $events[$i][1];
 			$sec = $time_until % 60;
                         $min = floor(($time_until / 60) % 60);
                         $hours = floor($time_until / 3600) % 24;
 			$total_days = floor($events[$i][2] / 86400);
-			$days = ($time_until / 86400);
+			$days = floor($time_until / 86400);
 			$j = $i;
 			if($j % 3 == 0){
 				echo '<div class="row">';
@@ -83,7 +84,7 @@ require 'init_sql.php';
               echo '<div id="eventcols" class="col-md-4 col-6-sm col-12-xs">
 		<div class="eventclock">
                         <div class="dayz">
-                                <div class="innerd"><input id="day" type="text" value="' . $days . '"  data-min="0" data-max="' . $total_days . '" data-height="300" data-width="300" data-displayinput=false data-thickness="0.3" data-bgColor="' . $colors[4] . '" data-fgColor="' . $colors[0] . '" class="dial hour"></div>
+                                <div class="innerd"><input id="day" type="text" value="' . $days . '"  data-min="0" data-max="' . $total_days . '" data-height="300" data-width="300" data-thickness="0.3" data-bgColor="' . $colors[4] . '" data-fgColor="' . $colors[0] . '" class="dial hour"></div>
                         </div>
                         <div class="hourz">
                                <div class="innerh"> <input id="hour" type="text" value="' . $hours . '"  data-min="0" data-max="220" data-height="210" data-width="210" data-thickness="0.25" data-displayinput=false data-fgColor="' . $colors[1] . '" data-bgColor="' . $colors[4] . '" class="dial hour"></div>
@@ -101,6 +102,22 @@ require 'init_sql.php';
         ?>
 
 	<script>create_knob();
+		$('.dial').each(function(){
+			$(this).val(this.val()).trigger('change');
+			});
+//	$('.dial').each(function(){
+//		$(this).trigger(
+//			'configure',
+//			{
+//				"readOnly":true
+//			});
+//		});
+		var titles  = <?php echo json_encode($titles);?>;
+		console.log(titles)
+		$(".dial").each(function(index){
+			$(this).val($(this).val() + ' Days');
+		});
+		//$(".dial").val($('.dial').val() + ' days');
 	</script>
 	<script>
 	$(".eventclock").each(function(){
