@@ -52,12 +52,21 @@ require 'init_sql.php';
   	<script>
   		function create_knob(){
   			$(".dial").knob();
+                        $(".dial").trigger(
+                                        'configure',
+                                        {
+                                                "ticks":"8",
+                                                "skin":"tron",
+                                        }
+                );
+
   		}
   	</script>
         <?php
 		require 'event_progress.php';
 		$events = events_progress();
 		$length = count($events);
+		$colors = array( "#006BB2", "#007ACC", "#008AE6", "#0099FF","#C2F0FF");
 		for($i =0; $i < $length; $i++){
 			$title = $events[$i][0];
 			$time_until = $events[$i][1];
@@ -74,16 +83,16 @@ require 'init_sql.php';
               echo '<div id="eventcols" class="col-md-4 col-6-sm col-12-xs">
 		<div class="eventclock">
                         <div class="dayz">
-                                <div class="innerd"><input id="day" type="text" value="' . $days . '"  data-min="0" data-max="' . $total_days . '" data-height="300" data-width="300" data-displayinput=false data-thickness="0.3" class="dial hour"></div>
+                                <div class="innerd"><input id="day" type="text" value="' . $days . '"  data-min="0" data-max="' . $total_days . '" data-height="300" data-width="300" data-displayinput=false data-thickness="0.3" data-bgColor="' . $colors[4] . '" data-fgColor="' . $colors[0] . '" class="dial hour"></div>
                         </div>
                         <div class="hourz">
-                               <div class="innerh"> <input id="hour" type="text" value="' . $hours . '"  data-min="0" data-max="24" data-height="210" data-width="210" data-thickness="0.25" data-displayinput=false class="dial hour"></div>
+                               <div class="innerh"> <input id="hour" type="text" value="' . $hours . '"  data-min="0" data-max="220" data-height="210" data-width="210" data-thickness="0.25" data-displayinput=false data-fgColor="' . $colors[1] . '" data-bgColor="' . $colors[4] . '" class="dial hour"></div>
                         </div>
                         <div class="minz">
-                                <div class="innerm"><input id="min" type="text" value="' . $min . '"  data-displayInput=false data-min="0" data-max="60" data-height="170" data-width="170" data-displayinput=false class="dial min"></div>
+                                <div class="innerm"><input id="min" type="text" value="' . $min . '"  data-displayInput=false data-min="0" data-max="60" data-height="170" data-width="170" data-displayinput=false data-fgColor="' . $colors[2] . '" data-bgColor="' . $colors[4] . '" class="dial min"></div>
                         </div>
                         <div class="secz">
-                                <div class="inners"><input id="secs" type="text" value="' . $sec . '"  data-displayInput=false data-min="0" data-max="60" data-height="145" data-width="145" data-thickness="0.1" class="dial sec"></div>
+                                <div class="inners"><input id="secs" type="text" value="' . $sec . '"  data-displayInput=false data-min="0" data-max="60" data-height="145" data-width="145" data-thickness="0.1" data-fgColor="' . $colors[3] . '" data-bgColor="' . $colors[4] . '" class="dial sec"></div>
                         </div>
                 </div>
 		</div>';
@@ -91,7 +100,8 @@ require 'init_sql.php';
 		}
         ?>
 
-	<script>create_knob();</script>
+	<script>create_knob();
+	</script>
 	<script>
 	$(".eventclock").each(function(){
 		var $clock = $(this);
