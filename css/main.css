@@ -12,8 +12,11 @@ h1{
 /* KNOBS */
 
 .row{
-        margin-top:300px;
-        margin-bottom:300px;
+
+}
+
+#eventcols{
+ height: 330px;
 }
 
 .eventclock{

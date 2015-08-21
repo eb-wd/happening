@@ -1,9 +1,8 @@
 <?php 
 set_include_path('server/');
-
 require 'init_sql.php';
-
-?><!doctype html>
+?>
+<!doctype html>
 <html lang="en">
 <head>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -67,7 +66,12 @@ require 'init_sql.php';
                         $hours = floor($time_until / 3600) % 24;
 			$total_days = floor($events[$i][2] / 86400);
 			$days = ($time_until / 86400);
-              echo '<div class="row">
+			$j = $i;
+			if($j % 3 == 0){
+				echo '<div class="row">';
+				$row_begin = $j;
+			}
+              echo '<div id="eventcols" class="col-md-4 col-6-sm col-12-xs">
 		<div class="eventclock">
                         <div class="dayz">
                                 <div class="innerd"><input id="day" type="text" value="' . $days . '"  data-min="0" data-max="' . $total_days . '" data-height="300" data-width="300" data-displayinput=false data-thickness="0.3" class="dial hour"></div>
@@ -83,16 +87,7 @@ require 'init_sql.php';
                         </div>
                 </div>
 		</div>';
-/*
-	                echo '<div class="row">
-				<div class="eventclock">
-                                <input id="day" type="text" value="' . $days . '"  data-min="0" data-max="' . $total_days . '" class="dial hour">
-                		<input id="hour" type="text" value="' . $hours . '"  data-min="0" data-max="24" class="dial hour">
-                		<input id="min" type="text" value="' . $min . '"  data-displayInput=false data-min="0" data-max="60" class="dial min">
-                		<input id="secs" type="text" value="' . $sec . '"  data-displayInput=false data-min="0" data-max="60" class="dial sec">
-                		</div>
-                	</div>';
-*/
+			if($j % 3 == 2){ echo '</div>';}
 		}
         ?>
 
@@ -116,7 +111,6 @@ require 'init_sql.php';
 					$('#hour',$clock).val(hours).trigger("change");
 				}
                                 $('#min',$clock).val(mins).trigger("change");
-
 			}
 			val++;
 			$('#secs', $clock).val(val).trigger("change");
