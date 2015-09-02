@@ -1,4 +1,4 @@
-<?php 
+			<?php 
 set_include_path('server/');
 require 'init_sql.php';
 ?>
@@ -96,6 +96,9 @@ require 'init_sql.php';
                                 <div class="inners"><input id="secs" type="text" value="' . $sec . '"  data-displayInput=false data-min="0" data-max="60" data-height="145" data-width="145" data-thickness="0.1" data-fgColor="' . $colors[3] . '" data-bgColor="' . $colors[4] . '" class="dial sec"></div>
                         </div>
                 </div>
+		<div class="caption"><h3>' . $title . '</h3>
+				    <h5>' . $days . ' Days ' . $hours . ' hours ' . $min . ' minutes </h5>
+		</div>
 		</div>';
 			if($j % 3 == 2){ echo '</div>';}
 		}
@@ -136,24 +139,51 @@ require 'init_sql.php';
 	</script>
 
   <!-- DEV STUFF -->
-  	<form action="server/create_event.php" method="post">
-  		Title<input id="event_title" type="text" name="title"/>
-  		Date:<input id="event_date" type="datetime-local" name="date"/>
-  		Time:<input id="time_date" type="time" name="time"/>
-    		<input type="submit" value="submit" id="process_event"/>
+<div class="row">
+	<div id="create_event" class="lightbox">
+  	<form id="" class="" style="" action="server/create_event.php" method="post">
+  		<div class="form-group">
+			<label for="event_title">Title:</label>
+			<input id="event_title" type="text" name="title"/>
+		</div>
+		<div class="form-group">
+  			<label for="event_date">Date:</label>
+			<input id="event_date" type="datetime-local" name="date"/>
+  		</div>
+		<div class="form-group">
+			<label for="time_date">Time:</label>
+			<input id="time_date" type="time" name="time"/>
+   		</div>
+		<div class="form-group">
+			<input type="submit" class="btn btn-primary" value="submit" id="process_event"/>
+		</div>
   	</form>
-  	<button id="show_table">Show Events</button>
+	</div>
+  	<button id="add_event">Create Event</button>
+	<button id="show_table">Show Events</button>
   	<div class="table_container"></div>
   	<div class="prog"></div>
   	</div>
+</div>
   	<!-- END OF CONTENT BOX -->
   </div>
-  1
+
    <!-- END MAIN CONTAINER -->
 </body>
 <script src="js/show_table.js" defer></script>
 <script src="js/show_progress.js" defer></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.mobile.custom.min.js"></script>
-
+<script src="js/jquery.lightbox_me.js"></script>
+<script>
+$('#add_event').click(function(e) {
+    $('#create_event').lightbox_me({
+        centered: true, 
+        onLoad: function() { 
+            $('#create_event').find('input:first').focus()
+            }
+        });
+    e.preventDefault();
+});
+</script>
 </html>

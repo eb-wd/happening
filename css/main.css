@@ -3,6 +3,15 @@ body{
 	background-color: #AAE9FF;
 }
 
+.lightbox{
+	width:17%;
+	height:25%;
+	background-color:white;
+	display:none;
+	padding: 2em 2em 2.4em 2em;
+	border-radius:20px;
+	box-shadow:2px 2px 2px;
+}
 
 
 
@@ -18,9 +27,13 @@ h1{
 }
 
 #eventcols{
- height: 330px;
+	 height: 365px;
 }
-
+.caption{
+	height:330px;
+	margin-top:320px;
+	margin-left:2em;
+}
 .eventclock{
         position:relative;
         width:350px;
