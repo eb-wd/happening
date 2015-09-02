@@ -141,7 +141,7 @@ require 'init_sql.php';
   <!-- DEV STUFF -->
 <div class="row">
 	<div id="create_event" class="lightbox">
-  	<form id="" class="" style="" action="server/create_event.php" method="post">
+  	<form id="" class="" style="" onsubmit="return isValidDate();" action="server/create_event.php" method="post">
   		<div class="form-group">
 			<label for="event_title">Title:</label>
 			<input id="event_title" type="text" name="title"/>
@@ -185,5 +185,15 @@ $('#add_event').click(function(e) {
         });
     e.preventDefault();
 });
+
+function isValidDate(){
+		var now = new Date();
+		var date = $("#event_date").val();
+		var new_date = new Date(date.replace(/-/g,'/').replace('T',' '));
+		if(new_date < now){
+			alert("Woops Please choose a date in the future");
+			return false;
+	}
+}
 </script>
 </html>
