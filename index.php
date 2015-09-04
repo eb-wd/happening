@@ -159,10 +159,12 @@ require 'init_sql.php';
 		</div>
   	</form>
 	</div>
+	<div style="margin-top: 30px;">
   	<button id="add_event">Create Event</button>
 	<button id="show_table">Show Events</button>
   	<div class="table_container"></div>
   	<div class="prog"></div>
+	</div>
   	</div>
 </div>
   	<!-- END OF CONTENT BOX -->

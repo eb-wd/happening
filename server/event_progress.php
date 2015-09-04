@@ -4,7 +4,7 @@ require 'init_sql.php';
 
 function events_progress(){
 	global $connect;
-	$sql = "SELECT title,  date_created, event_date FROM progress1";
+	$sql = "SELECT id,  title,  date_created, event_date FROM progress1";
 	$result = $connect->query($sql);
 	date_default_timezone_set("America/Chicago");
 	$array = array();
@@ -20,10 +20,16 @@ function events_progress(){
 			$seconds = $time_until % 60;
 			$minutes = floor(($time_until / 60) % 60);
 			$hours = floor($time_until / 3600);
-
+			if($now > $date_end){
+				$id = $row['id'];
+				$sql = 'DELETE FROM progress1 WHERE id='. $id;
+			        $result = $connect->query($sql);
+			}
 			//$progress = round((($time_until / $total_time) * 100),0);
-			$event = array($row['title'],$time_until,$total_time);
-			array_push($array, $event);
+			else{
+				$event = array($row['title'],$time_until,$total_time);
+				array_push($array, $event);
+			}
 		}
 	}
 	//table is empty 
@@ -33,7 +39,6 @@ function events_progress(){
 	}
 	return $array;
 }
-
 
 
 ?>
