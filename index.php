@@ -159,9 +159,47 @@ require 'init_sql.php';
 		</div>
   	</form>
 	</div>
-	<div style="margin-top: 30px;">
+        <div id="update_event" class="lightbox">
+        <form id="" class="" style="" onsubmit="return isValidDate();" action="server/update_event.php" method="post">
+                <div class="form-group">
+                        <label for="event_title">Title:</label>
+			<select name="title">
+				<?php
+                			$events = events_progress();
+					$length = count($events);
+			                for($i =0; $i < $length; $i++){
+						$title = $events[$i][0];
+						echo '<option value="'.$title .'">' . $title . '</option>';
+					//	echo '<li id="'. $title . '"><a href="#" onclick="ondropSelect(this)">'. $title . '</a></li>';
+					}
+				?>
+  				</ul>
+			</select>
+                </div>
+		<div class="form-group">
+			<label for="new_title">New Title:</label>
+			<input id="new_title" type="text" name="new_title"/>(optional)
+		</div>
+                <div class="form-group">
+                        <label for="event_date">Date:</label>
+                        <input id="event_date" type="datetime-local" name="date"/>
+                </div>
+                <div class="form-group">
+                        <label for="time_date">Time:</label>
+                        <input id="time_date" type="time" name="time"/>
+                </div>
+                <div class="form-group">
+                        <input type="submit" class="btn btn-primary" value="submit" id="process_event"/>
+                </div>
+        </form>
+        </div>
+	<script>
+	//GETS A LIST OF TITLES TO UPDATE VALUE
+	</script>
+	<div style="margin-top: 100px;">
   	<button id="add_event">Create Event</button>
 	<button id="show_table">Show Events</button>
+	<button id="up_event">Update Event</button>
   	<div class="table_container"></div>
   	<div class="prog"></div>
 	</div>
@@ -187,7 +225,16 @@ $('#add_event').click(function(e) {
         });
     e.preventDefault();
 });
+$('#up_event').click(function(e){
+	$('#update_event').lightbox_me({
+		centered: true,
+		onLoad: function(){
+			$('#update_event').find('input:first').focus()
+			}
+		});
+		e.preventDefault();
 
+});
 function isValidDate(){
 		var now = new Date();
 		var date = $("#event_date").val();

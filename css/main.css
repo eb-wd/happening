@@ -5,7 +5,7 @@ body{
 
 .lightbox{
 	width:17%;
-	height:25%;
+	height:45%;
 	background-color:white;
 	display:none;
 	padding: 2em 2em 2.4em 2em;
@@ -27,10 +27,9 @@ h1{
 }
 
 #eventcols{
-	 height: 365px;
+	 height: 400px;
 }
 .caption{
-	height:330px;
 	margin-top:320px;
 	margin-left:2em;
 }
